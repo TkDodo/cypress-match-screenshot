@@ -108,6 +108,14 @@ function matchScreenshot (name, options = {}) {
                 } else {
                   const matches = result.stdout === 'Yay';
                   assert.isTrue(matches, 'Screenshots match');
+                  cy.exec(
+                    `rm "${cypressPaths.SCREENSHOT_FOLDER}/diff/${fileName}.png"`,
+                    { log: false }
+                  );
+                  cy.exec(
+                    `rm "${cypressPaths.SCREENSHOT_FOLDER}/new/${fileName}.png"`,
+                    { log: false }
+                  );
                 }
               });
           } else {
