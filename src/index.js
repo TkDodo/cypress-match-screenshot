@@ -53,7 +53,10 @@ function matchScreenshot (name, options = {}) {
 
   const id = uuid();
   let path = null;
-  cy
+
+  const element = options.element ? cy.get(options.element).first() : cy
+
+  element
     .screenshot(id, {
       log: false,
       onAfterScreenshot ($el, props) {
